@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Helvetica", sans-serif;
+    background-image: url("assets/pixel-art-canvas-bg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+main {
+    margin-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    font-size: 1.5em;
+    margin-top: 2%;
+}
+
+/* tools */
+#tools {
+    margin: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    width: 45px;
+    margin-right: 15px;
+    border-radius: 5%;
+    padding: 8px;
+}
+
+.icon:hover {
+    background-color: rgba(0, 0, 0, 0.200);
+}
+
+.icon:active {
+    background-color: rgba(0, 0, 0, 0.400);
+}
+
+#color-palette {
+    margin-right: 8px;
+}
+
+.colors {
+    display: flex;
+}
+
+.color {
+    width: 38px;
+    height: 38px;
+    border: solid 0.01px black;
+}
+
+.black {
+    background-color: black;
+}
+
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
+.blue {
+    background-color: blue;
+}
+
+#size-select {
+    background-color: white;
+    font-size: 1.4em;
+    border-radius: 5%;
+    padding: 8px;
+}
+
+#size-select:hover {
+    background-color: rgba(0, 0, 0, 0.200);
+}
+
+#size-select:active {
+    background-color: rgba(0, 0, 0, 0.400);
+}
+
+/* canvas */
+.row {
+    display: flex;
+}
+
+.pixel {
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    border: solid 0.01px black;
+}

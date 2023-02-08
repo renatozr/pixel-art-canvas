@@ -46,6 +46,7 @@ header {
 
 .icon:hover {
     background-color: rgba(0, 0, 0, 0.200);
+    cursor: pointer;
 }
 
 .icon:active {
@@ -64,6 +65,7 @@ header {
     width: 38px;
     height: 38px;
     border: solid 0.01px black;
+    cursor: pointer;
 }
 
 .black {
@@ -91,6 +93,7 @@ header {
 
 #size-select:hover {
     background-color: rgba(0, 0, 0, 0.200);
+    cursor: pointer;
 }
 
 #size-select:active {

@@ -1,2 +1,3 @@
-# pixel-art-canvas
-A Pixel Art Canvas Page
+# Pixel Art Canvas
+
+Demo: https://renatozr.github.io/pixel-art-canvas/

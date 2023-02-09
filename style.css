@@ -42,11 +42,11 @@ header {
     margin-right: 15px;
     border-radius: 5%;
     padding: 8px;
+    cursor: pointer;
 }
 
 .icon:hover {
     background-color: rgba(0, 0, 0, 0.200);
-    cursor: pointer;
 }
 
 .icon:active {
@@ -89,11 +89,11 @@ header {
     font-size: 1.4em;
     border-radius: 5%;
     padding: 8px;
+    cursor: pointer;
 }
 
 #size-select:hover {
     background-color: rgba(0, 0, 0, 0.200);
-    cursor: pointer;
 }
 
 #size-select:active {

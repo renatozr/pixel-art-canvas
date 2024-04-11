@@ -3,167 +3,167 @@ let selectedColor = "black";
 const RANDOM_COLORS_QUANTITY = 4;
 const DEFAULT_CANVAS_SIZE = 16;
 
-
 // ============== utils ==============
 function generateRandomRgb() {
-    const r = Math.floor(Math.random() * 256);
-    const g = Math.floor(Math.random() * 256);
-    const b = Math.floor(Math.random() * 256);
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
 
-    return `rgb(${r}, ${g}, ${b})`;
+  return `rgb(${r}, ${g}, ${b})`;
 }
-
 
 // ============== events ==============
 function selectColor(e) {
-    selectedColor = window.getComputedStyle(e.target).getPropertyValue("background-color");
+  selectedColor = window
+    .getComputedStyle(e.target)
+    .getPropertyValue("background-color");
 }
 
 function paintPixelMousemove(e) {
-    // paint if the mouse is pressed while moving
-    if (e.buttons === 1) {
-        e.target.style.backgroundColor = selectedColor;
-    }
+  // paint if the mouse is pressed while moving
+  if (e.buttons === 1) {
+    e.target.style.backgroundColor = selectedColor;
+  }
 }
 
 function paintPixelClick(e) {
-    e.target.style.backgroundColor = selectedColor;
+  e.target.style.backgroundColor = selectedColor;
 }
 
 function clearCanvas() {
-    const pixels = document.getElementsByClassName("pixel");
+  const pixels = document.getElementsByClassName("pixel");
 
-    for (let i = 0; i < pixels.length; i++) {
-        const pixel = pixels[i];
+  for (let i = 0; i < pixels.length; i++) {
+    const pixel = pixels[i];
 
-        pixel.style.backgroundColor = "white";
-    }
+    pixel.style.backgroundColor = "white";
+  }
 }
 
 function selectEraser() {
-    selectedColor = "white";
+  selectedColor = "white";
 }
 
 function changeRandomColors() {
-    removeRandomColors();
-    renderRandomColors();
+  removeRandomColors();
+  renderRandomColors();
 }
 
 function changeCanvasSize(e) {
-    removeCanvas();
-    renderCanvas(e.target.value);
+  removeCanvas();
+  renderCanvas(e.target.value);
 }
-
 
 // ============== renders ==============
 function renderRandomColor() {
-    const randomColor = document.createElement("div");
-    randomColor.classList.add("color");
-    randomColor.style.backgroundColor = generateRandomRgb();
-    randomColor.addEventListener("click", selectColor);
+  const randomColor = document.createElement("div");
+  randomColor.classList.add("color");
+  randomColor.style.backgroundColor = generateRandomRgb();
+  randomColor.addEventListener("click", selectColor);
 
-    return randomColor;
+  return randomColor;
 }
 
 function renderRandomColors() {
-    const randomColors = document.getElementById("random-colors");
+  const randomColors = document.getElementById("random-colors");
 
-    for (let i = 0; i < RANDOM_COLORS_QUANTITY; i++) {
-        const randomColor = renderRandomColor();
+  for (let i = 0; i < RANDOM_COLORS_QUANTITY; i++) {
+    const randomColor = renderRandomColor();
 
-        randomColors.appendChild(randomColor);
-    }
+    randomColors.appendChild(randomColor);
+  }
 }
 
 function removeRandomColors() {
-    const randomColors = document.getElementById("random-colors");
+  const randomColors = document.getElementById("random-colors");
 
-    randomColors.innerHTML = "";
+  randomColors.innerHTML = "";
 }
 
 function renderPixel() {
-    const pixel = document.createElement("div");
-    pixel.classList.add("pixel");
-    pixel.addEventListener("mousemove", paintPixelMousemove);
-    pixel.addEventListener("click", paintPixelClick);
+  const pixel = document.createElement("div");
+  pixel.draggable = false;
+  pixel.classList.add("pixel");
+  pixel.addEventListener("mousemove", paintPixelMousemove);
+  pixel.addEventListener("click", paintPixelClick);
 
-    return pixel;
+  return pixel;
 }
 
 function renderRow(length) {
-    const row = document.createElement("div");
-    row.classList.add("row");
+  const row = document.createElement("div");
+  row.draggable = false;
+  row.classList.add("row");
 
-    for (let i = 0; i < length; i++) {
-        const pixel = renderPixel();
+  for (let i = 0; i < length; i++) {
+    const pixel = renderPixel();
 
-        row.appendChild(pixel);
-    }
+    row.appendChild(pixel);
+  }
 
-    return row;
+  return row;
 }
 
 function renderCanvas(size = DEFAULT_CANVAS_SIZE) {
-    const canvas = document.getElementById("canvas");
+  const canvas = document.getElementById("canvas");
+  canvas.draggable = false;
 
-    for (let i = 0; i < size; i++) {
-        const row = renderRow(size);
+  for (let i = 0; i < size; i++) {
+    const row = renderRow(size);
 
-        canvas.appendChild(row);
-    }
+    canvas.appendChild(row);
+  }
 }
 
 function removeCanvas() {
-    const canvas = document.getElementById("canvas");
+  const canvas = document.getElementById("canvas");
 
-    canvas.innerHTML = "";
+  canvas.innerHTML = "";
 }
-
 
 // ============== add events ==============
 function addClearIconEvent() {
-    const clearIcon = document.getElementById("clear-icon");
+  const clearIcon = document.getElementById("clear-icon");
 
-    clearIcon.addEventListener("click", clearCanvas);
+  clearIcon.addEventListener("click", clearCanvas);
 }
 
 function addEraserIconEvent() {
-    const eraserIcon = document.getElementById("eraser-icon");
+  const eraserIcon = document.getElementById("eraser-icon");
 
-    eraserIcon.addEventListener("click", selectEraser);
+  eraserIcon.addEventListener("click", selectEraser);
 }
 
 function addDefaultColorsEvent() {
-    const defaultColors = document.getElementById("default-colors");
-    const colors = defaultColors.children;
+  const defaultColors = document.getElementById("default-colors");
+  const colors = defaultColors.children;
 
-    for (let i = 0; i < colors.length; i++) {
-        const color = colors[i];
+  for (let i = 0; i < colors.length; i++) {
+    const color = colors[i];
 
-        color.addEventListener("click", selectColor);
-    }
+    color.addEventListener("click", selectColor);
+  }
 }
 
 function addReloadIconEvent() {
-    const reloadIcon = document.getElementById("reload-icon");
+  const reloadIcon = document.getElementById("reload-icon");
 
-    reloadIcon.addEventListener("click", changeRandomColors);
+  reloadIcon.addEventListener("click", changeRandomColors);
 }
 
 function addSizeSelectEvent() {
-    const sizeSelect = document.getElementById("size-select");
+  const sizeSelect = document.getElementById("size-select");
 
-    sizeSelect.addEventListener("change", changeCanvasSize);
+  sizeSelect.addEventListener("change", changeCanvasSize);
 }
-
 
 // ============== start ==============
 window.onload = () => {
-    renderRandomColors();
-    renderCanvas();
-    addClearIconEvent();
-    addEraserIconEvent();
-    addDefaultColorsEvent();
-    addReloadIconEvent();
-    addSizeSelectEvent();
-}
+  renderRandomColors();
+  renderCanvas();
+  addClearIconEvent();
+  addEraserIconEvent();
+  addDefaultColorsEvent();
+  addReloadIconEvent();
+  addSizeSelectEvent();
+};

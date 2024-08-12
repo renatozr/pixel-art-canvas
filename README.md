@@ -24,7 +24,7 @@ To exercise the fundamentals of web development.
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/renatozr/pixel-art-canvas.git
+   git clone git@github.com:renatozr/pixel-art-canvas.git
    ```
 2. Enter the directory
    ```sh
